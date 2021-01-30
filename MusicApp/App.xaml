@@ -1,36 +1,31 @@
-﻿<Application x:Class="MusicApp.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MusicApp"
-             StartupUri="Views/MainWindow.xaml">
+<Application x:Class="MusicApp.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:MusicApp" StartupUri="Views/MainWindow.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
     <Application.Resources>
-
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml">
+                </ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml">
+                </ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml">
+                </ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml">
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="btnNavi" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignIconButton}">
-                <Setter Property="Width" Value="75"/>
-                <Setter Property="Height" Value="75"/>
-                <Setter Property="Margin" Value="5"/>
-                <Setter Property="BorderThickness" Value="0"/>
-
+                <Setter Property="Width" Value="75" />
+                <Setter Property="Height" Value="75" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
-
             <Style x:Key="btnMusic" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignIconButton}">
-                <Setter Property="Width" Value="80"/>
-                <Setter Property="Height" Value="80"/>
-                <Setter Property="Margin" Value="80"/>
-                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Width" Value="80" />
+                <Setter Property="Height" Value="80" />
+                <Setter Property="Margin" Value="80" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
-
-            <SolidColorBrush  x:Key="greyColorText" Color="#707070"/>
-
+            <SolidColorBrush x:Key="greyColorText" Color="#707070" />
+            <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:MusicApp.ViewModel" />
         </ResourceDictionary>
-
     </Application.Resources>
 </Application>

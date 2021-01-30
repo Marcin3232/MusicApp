@@ -6,24 +6,26 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MusicApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="400" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="{x:Null}" >
+        Title="MainWindow" Height="800" Width="400" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="{x:Null}" WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Source={StaticResource Locator},Path=Main}">
+            
     <Grid>
-        <materialDesign:Card Margin="10" UniformCornerRadius="20" Background="{x:Null}">
+        <materialDesign:Card Margin="10" UniformCornerRadius="20" Background="{x:Null}" MouseDown="Card_MouseDown">
             <StackPanel Background="#C4F3FF">
-            <Grid>
-                    <Button Background="{x:Null}" Style="{StaticResource btnNavi}" HorizontalAlignment="Left" ToolTip="Open File" x:Name="btnFile">
+                <Grid>
+                    <Button Command="{Binding OpenFolderDialog}"  Background="{x:Null}" Style="{StaticResource btnNavi}" HorizontalAlignment="Left" ToolTip="Open File" x:Name="btnFile">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Assets/Images/icon_music_folder.png" Height="59" Width="59" />
                         </StackPanel>
                     </Button>
-                
-                    <Button Background="{x:Null}" Style="{StaticResource btnNavi}" HorizontalAlignment="Right" ToolTip="Minimalize App" x:Name="btnMinimalize" Margin="0,5,70,5" >
+
+                    <Button Background="{x:Null}" Style="{StaticResource btnNavi}" HorizontalAlignment="Right" ToolTip="Minimalize App" x:Name="btnMinimalize" Margin="0,5,70,5" Click="btnMinimalize_Click" >
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Assets/Images/icon_minim.png" Height="59" Width="59" />
                         </StackPanel>
                     </Button>
-                
-                    <Button Background="{x:Null}" Style="{StaticResource btnNavi}" HorizontalAlignment="Right" ToolTip="Close App" x:Name="btnClose">
+
+                    <Button Command="{Binding CloseWindowCommand}" Background="{x:Null}" Style="{StaticResource btnNavi}" HorizontalAlignment="Right" ToolTip="Close App" x:Name="btnClose" Click="btnClose_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Assets/Images/icon_exit.png" Height="59" Width="59" />
                         </StackPanel>
@@ -32,7 +34,7 @@
                 <TextBlock HorizontalAlignment="Center" Text="Music App" FontFamily="NSimSun" FontSize="46" Foreground="{StaticResource greyColorText}" Margin="0,20,0,0" FontWeight="Bold"/>
                 <Image x:Name="MusicImg" Source="/Assets/Images/icon_music.png" Width="243" Height="243" Margin="0,20,0,0"/>
                 <TextBlock HorizontalAlignment="Center" Margin="0,11,0,0" Foreground="{StaticResource greyColorText}" Text="Current sound" FontSize="26" FontFamily="NSimSun" />
-                <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" Foreground="{StaticResource greyColorText}" Text="Random Name" FontFamily="NSimSun" FontSize="20"/>
+                <TextBlock x:Name="soundName"  HorizontalAlignment="Center" Margin="0,10,0,0" Foreground="{StaticResource greyColorText}" Text="Random Name" FontFamily="NSimSun" FontSize="20"/>
                 <Slider Value="0" Maximum="50" Margin="20,0" x:Name="TimerSlider"/>
                 <WrapPanel HorizontalAlignment="Center" Margin="0,10">
                     <Button Style="{StaticResource btnMusic}" HorizontalAlignment="Right" Margin="10,0" ToolTip="Play last track" x:Name="btnLastTrack">
@@ -40,19 +42,36 @@
                             <Image Source="/Assets/Images/icon_return.png" Height="64" Width="64"/>
                         </StackPanel>
                     </Button>
-                    <Button Style="{StaticResource btnMusic}" HorizontalAlignment="Right" Margin="10,0" ToolTip="Play last track" x:Name="btnPlay">
+                    <Button Style="{StaticResource btnMusic}" HorizontalAlignment="Right" Margin="10,0" ToolTip="Play/Stop sound" x:Name="btnPlay">
                         <StackPanel>
                             <Image Source="/Assets/Images/icon_play.png" Height="64" Width="64"/>
                         </StackPanel>
                     </Button>
-                    <Button Style="{StaticResource btnMusic}" HorizontalAlignment="Right" Margin="10,0" ToolTip="Play last track" x:Name="btnNext">
+                    <Button Style="{StaticResource btnMusic}" HorizontalAlignment="Right" Margin="10,0" ToolTip="Play next track" x:Name="btnNext">
                         <StackPanel>
                             <Image Source="/Assets/Images/icon_back.png" Height="64" Width="64"/>
                         </StackPanel>
                     </Button>
                 </WrapPanel>
-                
-                
+                <ListView>
+
+                    <Grid Margin="0,25">
+                        <materialDesign:Card Background="White"  HorizontalAlignment="Center" UniformCornerRadius="20" Width="301" Height="62" Margin="30,0,0,0">
+                            <ListViewItem>
+                                <WrapPanel HorizontalAlignment="Left">
+                                    <Image Source="/Assets/Images/icon_tune.png" Height="47" Width="47" Margin="20,0,5,0"/>
+                                    <TextBlock Text="play list 2" FontSize="18" VerticalAlignment="Center" FontFamily="NSimSun" Foreground="{StaticResource greyColorText}" />
+                                </WrapPanel>
+                            </ListViewItem>
+                        </materialDesign:Card>
+                    </Grid>
+
+                </ListView>
+
+                <WrapPanel HorizontalAlignment="Center">
+                    <Image Source="/Assets/Images/icon_icons8.png" Width="32" Height="32"/>
+                    <TextBlock Text="https://icons8.com" FontSize="14" FontFamily="NSimSun" VerticalAlignment="Center" Foreground="{StaticResource greyColorText}" />
+                </WrapPanel>
             </StackPanel>
 
         </materialDesign:Card>
